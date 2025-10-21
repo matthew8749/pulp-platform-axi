@@ -34,7 +34,7 @@ module axi_fifo_delay_dyn #(
   parameter int unsigned DepthB   = 4,    // Power of two
   parameter int unsigned MaxDelay = 1024,
   // DO NOT EDIT, derived parameters
-  localparam int unsigned DelayWidth = $clog2(MaxDelay) + 1
+  parameter int unsigned DelayWidth = $clog2(MaxDelay) + 1                                // @@change localparam to parameter
 ) (
   input  logic                  clk_i,      // Clock
   input  logic                  rst_ni,     // Asynchronous reset active low
@@ -50,6 +50,7 @@ module axi_fifo_delay_dyn #(
   output axi_req_t              mst_req_o,
   input  axi_resp_t             mst_resp_i
 );
+
 
   if (DepthAR > 0) begin
     stream_fifo_delay_dyn #(

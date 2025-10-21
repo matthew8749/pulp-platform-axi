@@ -49,8 +49,8 @@ import cf_math_pkg::idx_width;
   /// } rule_t;
   /// ```
   parameter type rule_t                                               = axi_pkg::xbar_rule_64_t,
-  localparam int unsigned MstPortsIdxWidth =
-      (Cfg.NoMstPorts == 32'd1) ? 32'd1 : unsigned'($clog2(Cfg.NoMstPorts))
+  parameter int unsigned MstPortsIdxWidth =
+      (Cfg.NoMstPorts == 32'd1) ? 32'd1 : unsigned'($clog2(Cfg.NoMstPorts))               // @@change localparam to parameter
 ) (
   /// Clock, positive edge triggered.
   input  logic                                                          clk_i,

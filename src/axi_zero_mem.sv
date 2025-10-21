@@ -39,11 +39,11 @@ module axi_zero_mem #(
   /// Depth of memory response buffer. This should be equal to the memory response latency.
   parameter int unsigned BufDepth   = 1,
   /// Dependent parameter, do not override. Memory address type.
-  localparam type addr_t     = logic [AddrWidth-1:0],
+  parameter type addr_t     = logic [AddrWidth-1:0],                                      // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory data type.
-  localparam type mem_data_t = logic [DataWidth/NumBanks-1:0],
+  parameter type mem_data_t = logic [DataWidth/NumBanks-1:0],                             // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory write strobe type.
-  localparam type mem_strb_t = logic [DataWidth/NumBanks/8-1:0]
+  parameter type mem_strb_t = logic [DataWidth/NumBanks/8-1:0]                            // @@change localparam to parameter
 ) (
   /// Clock input.
   input  logic                           clk_i,

@@ -38,11 +38,11 @@ module axi_to_mem #(
   /// Depth of output fifo/fall_through_register. Increase for asymmetric backpressure (contention) on banks.
   parameter int unsigned OutFifoDepth = 1,
   /// Dependent parameter, do not override. Memory address type.
-  localparam type addr_t     = logic [AddrWidth-1:0],
+  parameter type addr_t     = logic [AddrWidth-1:0],                                      // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory data type.
-  localparam type mem_data_t = logic [DataWidth/NumBanks-1:0],
+  parameter type mem_data_t = logic [DataWidth/NumBanks-1:0],                             // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory write strobe type.
-  localparam type mem_strb_t = logic [DataWidth/NumBanks/8-1:0]
+  parameter type mem_strb_t = logic [DataWidth/NumBanks/8-1:0]                            // @@change localparam to parameter
 ) (
   /// Clock input.
   input  logic                           clk_i,
@@ -136,11 +136,11 @@ module axi_to_mem_intf #(
   /// Depth of output fifo/fall_through_register. Increase for asymmetric backpressure (contention) on banks.
   parameter int unsigned OUT_FIFO_DEPTH = 32'd1,
   /// Dependent parameter, do not override. See `axi_to_mem`, parameter `addr_t`.
-  localparam type addr_t     = logic [ADDR_WIDTH-1:0],
+  parameter type addr_t     = logic [ADDR_WIDTH-1:0],                                     // @@change localparam to parameter
   /// Dependent parameter, do not override. See `axi_to_mem`, parameter `mem_data_t`.
-  localparam type mem_data_t = logic [DATA_WIDTH/NUM_BANKS-1:0],
+  parameter type mem_data_t = logic [DATA_WIDTH/NUM_BANKS-1:0],                           // @@change localparam to parameter
   /// Dependent parameter, do not override. See `axi_to_mem`, parameter `mem_strb_t`.
-  localparam type mem_strb_t = logic [DATA_WIDTH/NUM_BANKS/8-1:0]
+  parameter type mem_strb_t = logic [DATA_WIDTH/NUM_BANKS/8-1:0]                          // @@change localparam to parameter
 ) (
   /// Clock input.
   input  logic                            clk_i,

@@ -40,15 +40,15 @@ module axi_to_detailed_mem #(
   /// Depth of output fifo/fall_through_register. Increase for asymmetric backpressure (contention) on banks.
   parameter int unsigned OutFifoDepth = 1,
   /// Dependent parameter, do not override. Memory address type.
-  localparam type addr_t     = logic [AddrWidth-1:0],
+  parameter type addr_t     = logic [AddrWidth-1:0],                                      // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory data type.
-  localparam type mem_data_t = logic [DataWidth/NumBanks-1:0],
+  parameter type mem_data_t = logic [DataWidth/NumBanks-1:0],                             // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory write strobe type.
-  localparam type mem_strb_t = logic [DataWidth/NumBanks/8-1:0],
+  parameter type mem_strb_t = logic [DataWidth/NumBanks/8-1:0],                           // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory id type.
-  localparam type mem_id_t   = logic [IdWidth-1:0],
+  parameter type mem_id_t   = logic [IdWidth-1:0],                                        // @@change localparam to parameter
   /// Dependent parameter, do not override. Memory user type.
-  localparam type mem_user_t = logic [UserWidth-1:0]
+  parameter type mem_user_t = logic [UserWidth-1:0]                                       // @@change localparam to parameter
 ) (
   /// Clock input.
   input  logic                             clk_i,
@@ -98,6 +98,7 @@ module axi_to_detailed_mem #(
   /// Memory stream master, read response exclusive access OK.
   input  logic             [NumBanks-1:0]  mem_exokay_i
 );
+
 
   typedef logic [DataWidth-1:0]   axi_data_t;
   typedef logic [DataWidth/8-1:0] axi_strb_t;
@@ -617,11 +618,11 @@ module axi_to_detailed_mem_intf #(
   /// Depth of output fifo/fall_through_register. Increase for asymmetric backpressure (contention) on banks.
   parameter int unsigned OUT_FIFO_DEPTH = 32'd1,
   /// Dependent parameter, do not override. See `axi_to_mem`, parameter `addr_t`.
-  localparam type addr_t     = logic [ADDR_WIDTH-1:0],
+  parameter type addr_t     = logic [ADDR_WIDTH-1:0],                                     // @@change localparam to parameter
   /// Dependent parameter, do not override. See `axi_to_mem`, parameter `mem_data_t`.
-  localparam type mem_data_t = logic [DATA_WIDTH/NUM_BANKS-1:0],
+  parameter type mem_data_t = logic [DATA_WIDTH/NUM_BANKS-1:0],                           // @@change localparam to parameter
   /// Dependent parameter, do not override. See `axi_to_mem`, parameter `mem_strb_t`.
-  localparam type mem_strb_t = logic [DATA_WIDTH/NUM_BANKS/8-1:0]
+  parameter type mem_strb_t = logic [DATA_WIDTH/NUM_BANKS/8-1:0]                          // @@change localparam to parameter
 ) (
   /// Clock input.
   input  logic                              clk_i,
@@ -743,19 +744,19 @@ module mem_stream_to_banks_detailed #(
   /// Request sideband type.
   parameter  type wuser_t     = logic [WUserWidth-1:0],
   /// Dependent parameter, do not override! Address type.
-  localparam type addr_t      = logic [AddrWidth-1:0],
+  parameter type addr_t      = logic [AddrWidth-1:0],                                     // @@change localparam to parameter
   /// Dependent parameter, do not override! Input data type.
-  localparam type inp_data_t  = logic [DataWidth-1:0],
+  parameter type inp_data_t  = logic [DataWidth-1:0],                                     // @@change localparam to parameter
   /// Dependent parameter, do not override! Input write strobe type.
-  localparam type inp_strb_t  = logic [DataWidth/8-1:0],
+  parameter type inp_strb_t  = logic [DataWidth/8-1:0],                                   // @@change localparam to parameter
   /// Dependent parameter, do not override! Input response sideband type.
-  localparam type inp_ruser_t = logic [NumBanks-1:0][RUserWidth-1:0],
+  parameter type inp_ruser_t = logic [NumBanks-1:0][RUserWidth-1:0],                      // @@change localparam to parameter
   /// Dependent parameter, do not override! Output data type.
-  localparam type oup_data_t  = logic [DataWidth/NumBanks-1:0],
+  parameter type oup_data_t  = logic [DataWidth/NumBanks-1:0],                            // @@change localparam to parameter
   /// Dependent parameter, do not override! Output write strobe type.
-  localparam type oup_strb_t  = logic [DataWidth/NumBanks/8-1:0],
+  parameter type oup_strb_t  = logic [DataWidth/NumBanks/8-1:0],                          // @@change localparam to parameter
   /// Dependent parameter, do not override! Output response sideband type.
-  localparam type oup_ruser_t = logic [RUserWidth-1:0]
+  parameter type oup_ruser_t = logic [RUserWidth-1:0]                                     // @@change localparam to parameter
 ) (
   /// Clock input.
   input  logic                       clk_i,

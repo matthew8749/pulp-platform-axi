@@ -430,14 +430,14 @@ module axi_id_remap_table #(
   /// Maximum number of in-flight transactions with the same ID.
   parameter int unsigned MaxTxnsPerId = 32'd0,
   /// Derived (**=do not override**) type of input IDs.
-  localparam type id_inp_t = logic [InpIdWidth-1:0],
+  parameter type id_inp_t = logic [InpIdWidth-1:0],                                       // @@change localparam to parameter
   /// Derived (**=do not override**) width of table index (ceiled binary logarithm of
   /// `MaxUniqInpIds`).
-  localparam int unsigned IdxWidth = cf_math_pkg::idx_width(MaxUniqInpIds),
+  parameter int unsigned IdxWidth = cf_math_pkg::idx_width(MaxUniqInpIds),                // @@change localparam to parameter
   /// Derived (**=do not override**) type of table index (width = `IdxWidth`).
-  localparam type idx_t = logic [IdxWidth-1:0],
+  parameter type idx_t = logic [IdxWidth-1:0],                                            // @@change localparam to parameter
   /// Derived (**=do not override**) type with one bit per table entry (thus also output ID).
-  localparam type field_t = logic [MaxUniqInpIds-1:0]
+  parameter type field_t = logic [MaxUniqInpIds-1:0]                                      // @@change localparam to parameter
 ) (
   /// Rising-edge clock of all ports
   input  logic    clk_i,
